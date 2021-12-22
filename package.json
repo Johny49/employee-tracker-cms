@@ -1,0 +1,26 @@
+{
+  "name": "employee-tracker-cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "db",
+  },
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johny49/employee-tracker-cms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Johny49/employee-tracker-cms/issues"
+  },
+  "homepage": "https://github.com/Johny49/employee-tracker-cms#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.3"
+  }
+}
