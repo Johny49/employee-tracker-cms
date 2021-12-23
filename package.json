@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "directories": {
-    "lib": "db",
+    "lib": "db"
   },
   "scripts": {
   },
