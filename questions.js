@@ -1,26 +1,27 @@
 // Initial options
-Select an option:
-    * view all departments, 
-        -> show departments in table
-    * view all roles, 
-        -> show roles in table
-    * view all employees, 
-        -> show employees in table
-    * add a department,
-        -> prompt to add a new department
-    * add a role,
-        -> prompt to add a new role
-    * add an employee,
-        -> prompt to add a new employee
-    * and update an employee role
-        -> prompt to edit an existing employee
+// Select an option:
+//     * view all departments, 
+//         -> show departments in table
+//     * view all roles, 
+//         -> show roles in table
+//     * view all employees, 
+//         -> show employees in table
+//     * add a department,
+//         -> prompt to add a new department
+//     * add a role,
+//         -> prompt to add a new role
+//     * add an employee,
+//         -> prompt to add a new employee
+//     * update an employee role
+//         -> prompt to edit an existing employee
+//     * view total department personnel budget
 
 const mainMenuQuestions = [
     {
         type: 'list',
         name: 'menuChoice',
         message: 'Select an option:',
-        choices: ["View Departments", "View Roles", "View Employees", "Add New Department", "Add New Role", "Add New Employee", "Update Existing Employee"],
+        choices: ["View Departments", "View Roles", "View Employees", "Add New Department", "Add New Role", "Add New Employee", "Update Existing Employee", "View Total Department Personnel Budget"],
     },
 ];
 
@@ -78,9 +79,17 @@ const addEmployeeQuestions = [
     },
     {
         type: 'input',
-        name: 'employeeMgrInput',
-        message: 'How do you want to  a department for this role: ',
-        when: (answers) => answers.addMgr === true // TODO use input to query for mgr
+        name: 'employeeMgrFName',
+        message: 'Please enter manager\'s first name',
+        when: (answers) => answers.addMgr === true, // TODO use input to query for mgr
+        validate: "" // verify length < 30 
+    },
+    {
+        type: 'input',
+        name: 'employeeMgrLName',
+        message: 'Please enter manager\'s last name',
+        when: (answers) => answers.addMgr === true, // TODO use input to query for mgr
+        validate: "" // verify length < 30 
     },
 ];
 
@@ -97,4 +106,8 @@ const editEmployeeQuestions = [
         message: 'What is the last name of the employee?',
         validate: "" // TODO validate input ??
     },
+
+    {
+        // TODO: add questions for dept budget
+    }
 ];
