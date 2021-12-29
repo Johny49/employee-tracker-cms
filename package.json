@@ -6,8 +6,7 @@
   "directories": {
     "lib": "db"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Johny49/employee-tracker-cms.git"
@@ -20,6 +19,7 @@
   },
   "homepage": "https://github.com/Johny49/employee-tracker-cms#readme",
   "dependencies": {
+    "console.table": "^0.10.0",
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.3"
   }
