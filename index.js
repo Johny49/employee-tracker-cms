@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 // question set
 const questions = require('./lib/questions');
 // saved queries
-const { showAll, addNew, listDepts, queryBySelection } = require('./lib/queries');
+const { showAll, addNew, listDepts, getDeptBudget } = require('./lib/queries');
 
 const init = () => {    // ??
     // console.log(String.fromCharCode(2589, 2589, 2589, 2589));    // TODO ADD TITLE/ LOGO HERE
@@ -142,11 +142,13 @@ const updateEmployee = (fName, lName) => {
 };
 
 // Display personnel budget for user selected department
-const showDeptBudget = (dept) => {
+const showDeptBudget = () => {
     inquirer.prompt(questions.showDepartmentBudgetQuestions)
         .then(function (answers) {
-
+            getDeptBudget(answers.department);
+            showMainMenu();
         });
+
 };
 
 // initialize the application
