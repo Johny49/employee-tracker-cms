@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Johny49/employee-tracker-cms#readme",
   "dependencies": {
+    "asciiart-logo": "^0.2.6",
     "console.table": "^0.10.0",
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.3"

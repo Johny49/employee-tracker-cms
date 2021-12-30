@@ -1,12 +1,25 @@
 const inquirer = require('inquirer');
+const logo = require('asciiart-logo');
 // question set
 const questions = require('./lib/questions');
 // query functions
 const { showAll, addNew, buildList, updateEmployee, getDeptBudget } = require('./lib/queries');
 
-const init = () => {    // ??
-    // console.log(String.fromCharCode(2589, 2589, 2589, 2589));    // TODO ADD TITLE/ LOGO HERE
-    // query to create list of department names
+const appLogo = logo({
+    name: "Employee Tracker CMS",
+    font: "ANSI Shadow",
+    lineChars: 16,
+    padding: 2,
+    margin: 3,     
+    borderColor: 'blue',
+    logoColor: 'blue'
+}).render();
+
+const init = () => {
+    // display app logo
+    console.log(appLogo);    
+
+    // query to create lists for prompt choices
     buildList('department');
     buildList('role');
     buildList('employee');
@@ -118,7 +131,6 @@ const showDeptBudget = () => {
             getDeptBudget(answers.department);
             showMainMenu();
         });
-
 };
 
 // initialize the application

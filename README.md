@@ -16,8 +16,8 @@
 This a Node.js command-line application that interfaces with a basic employee management database to manage department, role, and employee records.
 
 ## Screenshots
-![Screenshot of finished webpage](./assets/readme-screenshot.png)
-
+![Screenshot of app inital screen](./assets/readme-screenshot.png)
+![Screenshot of app display](./assets/readme-screenshot-2.png)
 
 ## Prompt-Structure
     * View All
@@ -57,6 +57,16 @@ This a Node.js command-line application that interfaces with a basic employee ma
 Install npm dependencies:
 ```bash
 npm install
+```
+Load database schema:
+```bash
+mysql -u root
+source db/schema.sql;
+```
+
+Optional - Load seed data:
+```bash
+source db/seeds.sql;
 ```
 
 
