@@ -1,13 +1,15 @@
 const inquirer = require('inquirer');
 // question set
 const questions = require('./lib/questions');
-// saved queries
-const { showAll, addNew, listDepts, getDeptBudget } = require('./lib/queries');
+// query functions
+const { showAll, addNew, buildList, updateEmployee, getDeptBudget } = require('./lib/queries');
 
 const init = () => {    // ??
     // console.log(String.fromCharCode(2589, 2589, 2589, 2589));    // TODO ADD TITLE/ LOGO HERE
     // query to create list of department names
-    listDepts();
+    buildList('department');
+    buildList('role');
+    buildList('employee');
     showMainMenu();
 };
 
@@ -22,7 +24,7 @@ const showMainMenu = () => {
                 case 'Add New Department, Role or Employee':
                     addNewMenu();
                     break;
-                case 'Update An Existing Record':
+                case 'Update An Existing Employee Record':
                     updateRecordMenu();
                     break;
                 case 'View Total Department Personnel Budget':
@@ -65,79 +67,47 @@ const addNewMenu = () => {
 const addDepartment = () => {
     inquirer.prompt(questions.addDepartmentQuestions)
         .then(function (answers) {
-            try {
-                // let obj = { "name": answers.newDeptName.trim() };
-                addNew('department', [answers.newDeptName])
-                showMainMenu();
-            } catch (error) {
-                console.log(error, `${answers.newDeptName} was not created.`);
-                showMainMenu();
-            }
+            addNew('department', [answers.newDeptName.trim()]);
+        })
+        .then(() => {
+            // update list for prompt choices
+            buildList('department');
+            showMainMenu();
         });
-};
+}
 
 // Create a new role
 const addRole = () => {
     inquirer.prompt(questions.addRoleQuestions)
-        .then(function (answers) {
-        //     const res = queryBySelection('department', 'id', `name = '${answers.newRoleDept}'`)
-        // .then(function (res) {
-            try {
-                // let obj = { "title": answers.newRoleTitle.trim(), "department_id": res.id, "salary": answers.newRoleSalary };
-                addNew("role", [answers.newRoleTitle.trim(), answers.newroleDept, answers.newRoleSalary]); 
-                showMainMenu();               
-            } catch (error) {
-                console.log(error, `\n ${answers.newRoleTitle} role was not created.`);
-                showMainMenu();
-            }
+        .then((answers) => {
+            addNew("role", [answers.newRoleTitle.trim(), answers.newRoleDept, answers.newRoleSalary]);
+        })
+        .then(() => {
+            // update list for prompt choices
+            buildList('role');
+            showMainMenu();
         });
-        // });
 };
 
 // Create a new employee
 const addEmployee = () => {
-    // todo query list of roles,  manager??
     inquirer.prompt(questions.addEmployeeQuestions)
-        .then(function (answers) {
-            
-            console.log(answers);
-            try {
-                let obj = { "first_name": obj.first_name, "last_name": obj.last_name, "role_id": obj.role_id, "manager_id": obj.manager_id };
-                addNew("employee", obj);
-                showMainMenu();
-            } catch (error) {
-                console.log(error, `${answers.newEmployeeFName} ${answers.newEmployeeLName} was not created.`);
-                showMainMenu();
-            }
+        .then((answers) => {
+            addNew("employee", [answers.newEmployeeFName, answers.newEmployeeLName, answers.newRole, answers.newEmployeeMgr])
+        })
+        .then(() => {
+            //update list for prompt choices
+            buildList('employee');
+            showMainMenu();
         });
 };
 
-// Menu to update an existing record in a selected category
+// Menu to update an existing employee record
 const updateRecordMenu = () => {
-    inquirer.prompt(questions.updatePrompt)
+    inquirer.prompt(questions.updateEmployeeQuestions)
         .then(function (answers) {
-            switch (answers.viewAllType) {
-                    case 'Update Existing Department':
-                        console.log('Not ready yet');
-                        showMainMenu();
-                        break;
-                    case 'Update Existing Role':
-                       console.log('Not ready yet');
-                        showMainMenu();
-                        break;
-                    case 'Update Existing Employee':
-                        updateEmployee();
-                        showMainMenu(); 
-                        break;
-            };
-        });
-};
-
-// Edit saved values for existing employee
-const updateEmployee = (fName, lName) => {
-    inquirer.prompt(questions.editEmployeeQuestions)
-        .then(function (answers) {
-
+            updateEmployee(answers.chooseEmployee, answers.updateRole, answers.updateMgr);
+            showMainMenu();
         });
 };
 
