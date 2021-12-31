@@ -13,7 +13,7 @@
 * [Project Status](#project-status)
 
 ## Description 
-This a Node.js command-line application that interfaces with a basic employee management database to manage department, role, and employee records.
+This is a Node.js command-line application that interfaces with a basic employee management database to manage department, role, and employee records.
 
 ## Screenshots
 ![Screenshot of app inital screen](./assets/readme-screenshot.png)
