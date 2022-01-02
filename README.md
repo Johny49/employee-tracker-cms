@@ -3,6 +3,7 @@
 ## Table of Contents
 * [Description](#description)
 * [Prompt Structure](#prompt-structure)
+* [Database Schema](#database-schema)
 * [Screenshots](#screenshot)
 * [Installation](#installation)
 * [Usage](#usage)
@@ -19,7 +20,7 @@ This is a Node.js command-line application that interfaces with a basic employee
 ![Screenshot of app inital screen](./assets/readme-screenshot.png)
 ![Screenshot of app display](./assets/readme-screenshot-2.png)
 
-## Prompt-Structure
+## Prompt Structure
     * View All
         - view all departments
         - view all roles
@@ -34,7 +35,9 @@ This is a Node.js command-line application that interfaces with a basic employee
         - select department
 
 
-## Database-Schema (employee_tracker_db)
+## Database Schema
+(employee_tracker_db)
+
 	• department
 	    ◦ id
 	    ◦ name
